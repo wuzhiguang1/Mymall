@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <!-- 排除详情页 -->
+    <keep-alive exclude="Detail">
+      <router-view></router-view>
+    </keep-alive>
+    
     <MainTabBar></MainTabBar>
 
   </div>

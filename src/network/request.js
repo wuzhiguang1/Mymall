@@ -4,12 +4,11 @@ export function request(config) {
 
   // 1.创建实例
   const instance = axios.create({
-      baseURL: 'http://152.136.185.210:8000',
+      baseURL: 'http://152.136.185.210:8000/api/z8',
       timeout: 5000
     })
     // 2.请求拦截
   instance.interceptors.request.use(config => {
-
     return config
   }, err => {
     console.log(err);

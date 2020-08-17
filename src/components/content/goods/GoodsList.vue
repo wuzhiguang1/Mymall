@@ -1,9 +1,9 @@
 <template>
   <div class="goods">
 
-    <GoodListItem v-for="(item,index) in goods" :key='goods[index].iid' :goodsitem="item"></GoodListItem>
+    <GoodListItem v-for="(item,index) in goods" :key='index' :goodsitem="item"></GoodListItem>
 
-    <!-- <span>{{goods}}</span> -->
+      
   </div>
 </template>
 
