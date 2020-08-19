@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import GoodListItem from './GoodsListItem'
+import GoodListItem from 'components/content/goods/GoodsListItem'
 export default {
   components: {
     GoodListItem,

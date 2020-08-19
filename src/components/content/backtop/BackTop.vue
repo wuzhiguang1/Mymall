@@ -13,7 +13,7 @@ export default {
 <style>
 .back-top{
   position: fixed;
-  bottom: 49px;
+  bottom: 61px;
   right: 0;
   z-index: 11;
 }

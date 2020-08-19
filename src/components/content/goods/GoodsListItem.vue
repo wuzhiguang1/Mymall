@@ -1,6 +1,6 @@
 <template>
   <div class="goods-list-item" @click="detailPageclick">
-    <img :src="goodsitem.show.img" alt @load="imgload" />
+    <img :src="showimages" alt @load="imgload" />
     <div class="goods-info">
       <p>{{goodsitem.title}}</p>
       <span class="price">￥{{goodsitem.price}}</span>
@@ -19,10 +19,19 @@ export default {
       },
     },
   },
+  computed: {
+    showimages(){
+      return this.goodsitem.image || this.goodsitem.show.img 
+    }
+  },
   methods: {
     // 滚动区域bug
     imgload() {
-      this.$bus.$emit("itemimgload");
+      if(this.$route.path.indexOf ('/home') === 0 ){
+        this.$bus.$emit("itemimgload");
+      }else if(this.$route.path.indexOf ('/detail') ===0){
+        this.$bus.$emit("detailitemimgload");
+      }
     },
     // 详情页
     detailPageclick() {

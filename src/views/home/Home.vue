@@ -102,7 +102,7 @@ export default {
      * 图片加载的事件监听
     */
     // 放抖动函数使用
-    const refresh = debounce(this.$refs.scroll && this.$refs.scroll.refresh, 400);
+    const refresh = debounce(this.$refs.scroll && this.$refs.scroll.refresh, 100);
     //解决滚动区域bug 使用事件总线
     this.$bus.$on("itemimgload", () => {
       refresh();

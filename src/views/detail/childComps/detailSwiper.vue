@@ -8,7 +8,7 @@
 
 </template>
 
-<script>
+<script scoped>
 import { Swiper, SwiperItem } from "components/common/swiper/index.js"
 export default {
   components: {

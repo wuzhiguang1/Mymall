@@ -8,6 +8,11 @@ export function getDetailData(iid) {
     }
   })
 }
+export function getRecommend() {
+  return request({
+    url: 'recommend'
+  })
+}
 
 export class Goods {
   constructor(itemInfo, columns, services) {
@@ -20,6 +25,7 @@ export class Goods {
     this.discountBgColor = itemInfo.discountBgColor
     this.columns = columns
     this.services = services
+    this.lowPrice = itemInfo.lowNowPrice
   }
 }
 export class Shops {
