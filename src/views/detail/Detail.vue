@@ -12,8 +12,9 @@
     </Scroll>
     <DetailBottombBar @addToCart ='addToCart'></DetailBottombBar>
     <BackTop @click.native="backtopclick" v-show="isbacktopshow"  />
-
+    <Toast :message="message" :show="show" class="detail-toast"></Toast>
   </div>
+
 </template>
 
 <script>
@@ -31,10 +32,13 @@ import DetailBottombBar from './childComps/DetailBottombBar'
 
 import GoodsList from "components/content/goods/GoodsList";
 import {backToMixin} from 'common/mixin.js'
+import Toast from 'components/common/toast/Toast.vue'
 // import BackTop from "components/content/backtop/BackTop";
 
 
 import {getDetailData, Goods, Shops, GoodsParam ,getRecommend} from 'network/detail.js'
+
+import { mapActions } from 'vuex'
 
 export default {
   name:'Detail',
@@ -49,6 +53,7 @@ export default {
     DetailCommontInfo,
     DetailBottombBar,
     GoodsList,
+    Toast,
     // BackTop,
   },
   data() {
@@ -64,6 +69,8 @@ export default {
       themTopYs:[],
       currentIndex: 0,
       // isbacktopshow: false,
+      message:'',
+      show:false,
     };
   },
   mixins: [backToMixin],
@@ -107,9 +114,11 @@ export default {
       // console.log("sss");
       refresh();
     });
+    
 
   },
   methods: {
+    ...mapActions(['addCart']),
     imageLoad(){
       this.$refs.scroll.refresh()
         this.themTopYs=[]
@@ -167,9 +176,28 @@ export default {
       product.lowPrice = this.goods.lowPrice;
 
 
-      console.log(product);
       // 2、将商品添加到购物车当中去
-      this.$store.dispatch('addCart',product) 
+
+      // 使用组件分发ACTION
+      this.addCart(product).then((res)=>{
+        
+        // 使用插件封装
+        this.$toast.show(res)
+
+        //传统做法
+        // this.show = true
+        // this.message = res
+
+        // setInterval(()=>{
+        //   this.show = false
+        //   this.message = ''
+        // },1500)
+      })
+      // 使用常规的调用ACTION
+      // this.$store.dispatch('addCart',product).then((res)=>{
+      //   console.log(res);
+      // })
+      
 
     }
 
@@ -187,6 +215,8 @@ export default {
 .detailScroll{
   height: calc(100% - 104px);
   background-color: #ffffff ;
+  overflow: hidden;
   
 }
+
 </style>
