@@ -1,5 +1,5 @@
 <template>
-  <scroll id="tab-menu">
+  <Scroll id="tab-menu">
     <div class="menu-list">
       <div class="menu-list-item"
            :class="{active: index===currentIndex}"
@@ -9,7 +9,7 @@
         {{item.title}}
       </div>
     </div>
-  </scroll>
+  </Scroll>
 </template>
 
 <script>

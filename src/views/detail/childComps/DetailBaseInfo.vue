@@ -17,7 +17,6 @@
         <span>{{goods.services[index-1].name}}</span>
       </span>
     </div>
-
   </div>
 </template>     
 

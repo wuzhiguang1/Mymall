@@ -2,9 +2,8 @@
 <div>
   <NavBar class="detailNavBar">
     <div slot="left" class="backImg" @click="backClick">
-      <img src="~assets/imgs/common/back.svg" alt="">
+      <img src="../../../assets/imgs/common/back.svg" alt="">
     </div>
-
     <div slot="center" class="navCenter">
       <div v-for="(item,index) in titles" 
           :key="index" class="navCenterItem" 
